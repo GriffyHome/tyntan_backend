@@ -54,7 +54,9 @@ app.get("/.well-known/jwks.json", (req, res) => {
 
 // Endpoint to serve the login page
 app.get("/login", (req, res) => {
-  res.sendFile(resolve(__dirname, "login.html"));
+  res.sendFile(resolve(__dirname, "login.html"), {
+    TELEGRAM_BOT_NAME: process.env.TELEGRAM_BOT_NAME,
+  });
 });
 
 // Endpoint to handle the Telegram callback
