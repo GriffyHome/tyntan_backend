@@ -37,7 +37,7 @@ const generateJwtToken = (userData) => {
     iat: Math.floor(Date.now() / 1000),
     exp: Math.floor(Date.now() / 1000) + 60 * 60, // 1 hour expiration
   };
-
+  console.log(payload);
   return jwt.sign(payload, privateKey, {
     algorithm: "RS256",
     keyid: JWT_KEY_ID,
@@ -76,6 +76,8 @@ app.get("/callback", async (req, res) => {
   const data = objectToAuthDataMap(req.query || {});
 
   try {
+    console.log("data ", req);
+
     const user = await validator.validate(data);
     const JWTtoken = generateJwtToken(user);
 
