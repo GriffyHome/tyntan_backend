@@ -44,14 +44,14 @@ const generateJwtToken = (userData) => {
   });
 };
 
-app.get("/", (req, res) => {
-  console.log("dcdsdsfs");
-  console.log(process.env.JWT_KEY_ID);
-  res.send(
-    "Express on Vercel for Telegram Login to be used with Web3Auth" +
-      process.env.JWT_KEY_ID
-  );
-});
+// app.get("/", (req, res) => {
+//   console.log("dcdsdsfs");
+//   console.log(process.env.JWT_KEY_ID);
+//   res.send(
+//     "Express on Vercel for Telegram Login to be used with Web3Auth" +
+//       process.env.JWT_KEY_ID
+//   );
+// });
 
 app.get("/.well-known/jwks.json", (req, res) => {
   const jwks = fs.readFileSync(path.resolve(__dirname, "jwks.json"), "utf8");
@@ -59,7 +59,7 @@ app.get("/.well-known/jwks.json", (req, res) => {
 });
 
 // Endpoint to serve the login page
-app.get("/login", (req, res) => {
+app.get("/", (req, res) => {
   console.log(process.env.TELEGRAM_BOT_NAME);
   console.log(process.env.SERVER_URL);
   const html = fs
